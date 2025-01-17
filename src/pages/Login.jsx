@@ -1,7 +1,7 @@
 /** @format */
 
 function Login() {
-  return <div>Login</div>;
+  return <>Login</>;
 }
 
 export default Login;

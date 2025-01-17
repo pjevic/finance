@@ -1,7 +1,7 @@
 /** @format */
 
 function Pots() {
-  return <div>Pots</div>;
+  return <>Pots</>;
 }
 
 export default Pots;

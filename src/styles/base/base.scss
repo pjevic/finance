@@ -14,13 +14,17 @@ html {
   font-size: 62.5%;
   height: 100%;
   overflow: hidden;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 
 body {
   box-sizing: border-box;
   background-color: var.$color-primary-beige-100;
   height: 100%;
+}
+
+ul {
+  list-style: none;
 }
 
 a {

@@ -1,35 +1,39 @@
 /** @format */
 
+@use "./variables.scss" as var;
+
 @mixin page() {
   padding: 3.2rem 4rem;
   max-width: 144rem;
   margin: 0 auto;
 }
 
-@mixin typography($preset, $bold: false) {
+@mixin typography($preset, $bold: false, $color: inherit) {
   @if $preset == 1 {
-    font-size: $font-size-1;
-    line-height: $line-height-tight;
+    font-size: var.$font-size-1;
+    line-height: var.$line-height-tight;
     font-weight: 700;
   } @else if $preset == 2 {
-    font-size: $font-size-2;
-    line-height: $line-height-tight;
+    font-size: var.$font-size-2;
+    line-height: var.$line-height-tight;
     font-weight: 700;
   } @else if $preset == 3 {
-    font-size: $font-size-3;
-    line-height: $line-height-normal;
-    font-weight: 700;
+    font-size: var.$font-size-3;
+    line-height: var.$line-height-normal;
+    font-weight: if($bold, 700, 400);
   } @else if $preset == 4 {
-    font-size: $font-size-4;
-    line-height: $line-height-normal;
+    font-size: var.$font-size-4;
+    line-height: var.$line-height-normal;
     font-weight: if($bold, 700, 400);
   } @else if $preset == 5 {
-    font-size: $font-size-5;
-    line-height: $line-height-normal;
+    font-size: var.$font-size-5;
+    line-height: var.$line-height-normal;
     font-weight: if($bold, 700, 400);
   } @else {
     @error "Invalid text preset: #{$preset}. Available presets are 1-5.";
   }
+
+  color: $color;
 }
 
 @mixin box-rounded-right($radius: 16px) {
@@ -42,6 +46,36 @@
   border-radius: 0;
   border-top-right-radius: $radius;
   border-top-left-radius: $radius;
+}
+
+// Transition utility mixin
+@mixin transition($properties, $duration: 0.2s, $timing: ease) {
+  transition: $properties $duration $timing;
+}
+
+// Flexbox utility mixin
+@mixin flex($direction: row, $align: center, $justify: flex-start) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+// Collapsed state utility mixin
+@mixin collapsed-state() {
+  width: 0;
+  opacity: 0;
+  transform: scale(0);
+  height: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// Absolute position mixin
+@mixin absolute-position() {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /**

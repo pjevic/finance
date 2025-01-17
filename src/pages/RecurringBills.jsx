@@ -1,7 +1,7 @@
 /** @format */
 
 function RecurringBills() {
-  return <div>Recurring Bills</div>;
+  return <>Recurring Bills</>;
 }
 
 export default RecurringBills;

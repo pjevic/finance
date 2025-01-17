@@ -1,7 +1,7 @@
 /** @format */
 
 function Transactions() {
-  return <div>Transactions</div>;
+  return <>Transactions</>;
 }
 
 export default Transactions;

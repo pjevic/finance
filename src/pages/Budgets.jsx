@@ -1,7 +1,7 @@
 /** @format */
 
 function Budgets() {
-  return <div>Budgets</div>;
+  return <>Budgets</>;
 }
 
 export default Budgets;

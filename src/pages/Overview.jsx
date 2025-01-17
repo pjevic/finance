@@ -1,7 +1,7 @@
 /** @format */
 
 function Overview() {
-  return <div>Overview</div>;
+  return <>Overview</>;
 }
 
 export default Overview;

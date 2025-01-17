@@ -1,0 +1,86 @@
+/** @format */
+
+@use "../../styles/abstracts/mixins.scss" as mix;
+@use "../../styles/abstracts/variables.scss" as var;
+
+.sidebar {
+  background-color: var.$color-gray-900;
+  height: 100dvh;
+  width: 30rem;
+  padding-bottom: 2.4rem;
+  @include mix.typography(3, true, var.$color-gray-300);
+  @include mix.box-rounded-right();
+
+  display: flex;
+  flex-direction: column;
+
+  .navigation {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 2.4rem;
+    }
+
+    &__item {
+      position: relative;
+    }
+
+    &__link {
+      padding: 1.6rem 0;
+      @include mix.box-rounded-right();
+
+      display: flex;
+      align-items: center;
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+      }
+
+      svg {
+        margin-left: 3.2rem;
+      }
+
+      p {
+        margin-left: 1.6rem;
+      }
+
+      &--active {
+        background-color: var.$color-primary-beige-100;
+
+        span {
+          background-color: var.$color-secondary-green;
+        }
+
+        svg {
+          fill: var.$color-secondary-green;
+        }
+
+        p {
+          color: var.$color-gray-900;
+        }
+      }
+    }
+
+    .btn {
+      margin-left: 3.2rem;
+      padding: 1.6rem 0;
+
+      display: flex;
+      align-items: center;
+
+      &__label {
+        margin-left: 1.6rem;
+      }
+    }
+  }
+}
