@@ -1,0 +1,89 @@
+/** @format */
+
+@mixin page() {
+  padding: 3.2rem 4rem;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+@mixin typography($preset, $bold: false) {
+  @if $preset == 1 {
+    font-size: $font-size-1;
+    line-height: $line-height-tight;
+    font-weight: 700;
+  } @else if $preset == 2 {
+    font-size: $font-size-2;
+    line-height: $line-height-tight;
+    font-weight: 700;
+  } @else if $preset == 3 {
+    font-size: $font-size-3;
+    line-height: $line-height-normal;
+    font-weight: 700;
+  } @else if $preset == 4 {
+    font-size: $font-size-4;
+    line-height: $line-height-normal;
+    font-weight: if($bold, 700, 400);
+  } @else if $preset == 5 {
+    font-size: $font-size-5;
+    line-height: $line-height-normal;
+    font-weight: if($bold, 700, 400);
+  } @else {
+    @error "Invalid text preset: #{$preset}. Available presets are 1-5.";
+  }
+}
+
+@mixin box-rounded-right($radius: 16px) {
+  border-radius: 0;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin box-rounded-top($radius: 16px) {
+  border-radius: 0;
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+/**
+ * MEDIA QUERY MANAGER
+ * 
+ * 0 - 600px:        Phone
+ * 600 - 900px:      Tablet portrait
+ * 900 - 1200px:     Tablet landscape
+ * [1200 - 1800]     Normal styles apply
+ * 1800px + :        Big desktop
+ * 
+ * $breakpoint arguement choices:
+ * - phone
+ * - tab-port
+ * - tab-land
+ * - big-desktop
+ *
+ * @format
+ */
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800
+  }
+}

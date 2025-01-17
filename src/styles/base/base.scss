@@ -1,0 +1,35 @@
+/** @format */
+
+@use "../abstracts/variables.scss" as var;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var.$color-primary-beige-100;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
