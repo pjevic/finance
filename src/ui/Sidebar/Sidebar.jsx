@@ -47,8 +47,8 @@ const NAV_ITEMS = [
 
 function Sidebar({ isCollapsed, toggleSidebar }) {
   return (
-    <aside className={style.sidebar}>
-      <Logo />
+    <aside className={`${style.sidebar} ${isCollapsed ? style.collapsed : ""}`}>
+      <Logo isCollapsed={isCollapsed} />
       <nav className={style.navigation}>
         <ul className={style.navigation__list}>
           {NAV_ITEMS.map(({ to, Icon, label, iconWeight }) => (
@@ -68,8 +68,12 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
             </li>
           ))}
         </ul>
-        <button className={style.btn}>
-          <ArrowFatLinesLeft size="2.4rem" weight="fill" />
+        <button onClick={toggleSidebar} className={style.btn}>
+          <ArrowFatLinesLeft
+            size="2.4rem"
+            weight="fill"
+            mirrored={isCollapsed}
+          />
           <p className={style.btn__label}>Minimize Menu</p>
         </button>
       </nav>

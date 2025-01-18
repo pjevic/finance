@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import Sidebar from "../Sidebar/Sidebar";
+import Main from "../Main/Main";
 import style from "./AppLayout.module.scss";
 
 function AppLayout() {
@@ -14,9 +15,9 @@ function AppLayout() {
   return (
     <div className={style.layout}>
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
-      <main>
+      <Main isCollapsed={isCollapsed}>
         <Outlet />
-      </main>
+      </Main>
     </div>
   );
 }

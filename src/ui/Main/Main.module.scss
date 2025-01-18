@@ -1,0 +1,11 @@
+/** @format */
+
+.main {
+  margin-left: 8.8rem;
+  transition: all 0.4s;
+
+  &__collapsed {
+    margin-left: 30rem;
+    transition: all 0.4s;
+  }
+}

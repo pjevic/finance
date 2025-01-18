@@ -12,11 +12,11 @@
   @if $preset == 1 {
     font-size: var.$font-size-1;
     line-height: var.$line-height-tight;
-    font-weight: 700;
+    font-weight: if($bold, 700, 400);
   } @else if $preset == 2 {
     font-size: var.$font-size-2;
     line-height: var.$line-height-tight;
-    font-weight: 700;
+    font-weight: if($bold, 700, 400);
   } @else if $preset == 3 {
     font-size: var.$font-size-3;
     line-height: var.$line-height-normal;

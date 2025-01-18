@@ -10,7 +10,9 @@
   padding-bottom: 2.4rem;
   @include mix.typography(3, true, var.$color-gray-300);
   @include mix.box-rounded-right();
+  transition: width 0.3s ease-in-out;
 
+  position: fixed;
   display: flex;
   flex-direction: column;
 
@@ -52,6 +54,7 @@
 
       p {
         margin-left: 1.6rem;
+        transition: all 0.4s;
       }
 
       &--active {
@@ -80,6 +83,58 @@
 
       &__label {
         margin-left: 1.6rem;
+      }
+    }
+  }
+
+  &.collapsed {
+    width: 8.8rem;
+
+    .navigation {
+      &__list {
+        padding-right: 1rem;
+      }
+
+      &__item {
+      }
+
+      &__link {
+        span {
+        }
+
+        svg {
+        }
+
+        p {
+          width: 0;
+          opacity: 0;
+          transform: scale(0);
+          height: 0;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        &--active {
+          span {
+          }
+
+          svg {
+          }
+
+          p {
+          }
+        }
+      }
+
+      .btn {
+        &__label {
+          width: 0;
+          opacity: 0;
+          transform: scale(0);
+          height: 0;
+          overflow: hidden;
+          white-space: nowrap;
+        }
       }
     }
   }
