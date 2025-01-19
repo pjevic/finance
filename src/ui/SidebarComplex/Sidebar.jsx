@@ -47,7 +47,8 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
   return (
     <aside className={style.col__main}>
       <div className={style.col__1}>
-        <Logo small={true} isCollapsed={isCollapsed} />
+        <Logo small={true} />
+
         <nav className={style.navigation}>
           <ul className={style.navigation__list}>
             {NAV_ITEMS.map(({ to, Icon, iconWeight }) => (
@@ -75,14 +76,14 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
           </button>
         </nav>
       </div>
+
       <div
         className={`${style.col__2} ${
           isCollapsed ? style["col__2--collapsed"] : ""
         }`}
       >
-        <div className={style.logo__container}>
-          <Logo small={false} />
-        </div>
+        <Logo small={false} />
+
         <nav className={style.navigation}>
           <ul className={style.navigation__list}>
             {NAV_ITEMS.map(({ to, label }) => (
