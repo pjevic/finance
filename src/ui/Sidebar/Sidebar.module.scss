@@ -1,139 +1,133 @@
 /** @format */
 
-@use "../../styles/abstracts/mixins.scss" as mix;
 @use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
 
-.sidebar {
-  background-color: var.$color-gray-900;
+.col__main {
   height: 100dvh;
-  width: 30rem;
-  padding-bottom: 2.4rem;
   @include mix.typography(3, true, var.$color-gray-300);
-  @include mix.box-rounded-right();
-  transition: width 0.3s ease-in-out;
 
-  position: fixed;
   display: flex;
-  flex-direction: column;
+  position: fixed;
+}
 
-  .navigation {
-    flex-grow: 1;
+.col {
+  &__1,
+  &__2 {
+    background-color: var.$color-gray-900;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
-    &__list {
+    .navigation {
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      padding-right: 2.4rem;
-    }
+      justify-content: space-between;
 
-    &__item {
-      position: relative;
-    }
-
-    &__link {
-      padding: 1.6rem 0;
-      @include mix.box-rounded-right();
-
-      display: flex;
-      align-items: center;
-
-      span {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
+      &__list {
+        padding: 2.4rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
 
-      svg {
-        margin-left: 3.2rem;
+      &__item.hover {
+        color: var.$color-gray-100;
       }
 
-      p {
-        margin-left: 1.6rem;
-        transition: all 0.4s;
-      }
-
-      &--active {
-        background-color: var.$color-primary-beige-100;
+      &__link {
+        height: 5.6rem;
+        position: relative;
+        display: flex;
+        align-items: center;
 
         span {
-          background-color: var.$color-secondary-green;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
         }
 
         svg {
-          fill: var.$color-secondary-green;
+          margin-left: 3.2rem;
         }
 
-        p {
-          color: var.$color-gray-900;
+        &:hover {
+          color: var.$color-gray-100;
+        }
+
+        &--active {
+          background-color: var.$color-primary-beige-100;
+
+          span {
+            background-color: var.$color-secondary-green;
+          }
+
+          svg {
+            fill: var.$color-secondary-green;
+          }
         }
       }
-    }
 
-    .btn {
-      margin-left: 3.2rem;
-      padding: 1.6rem 0;
+      button {
+        height: 5.6rem;
+        margin-bottom: 2.4rem;
+        display: flex;
+        align-items: center;
+      }
 
-      display: flex;
-      align-items: center;
-
-      &__label {
-        margin-left: 1.6rem;
+      &__btn.hover {
+        color: var.$color-gray-100;
       }
     }
   }
 
-  &.collapsed {
-    width: 8.8rem;
+  &__1 {
+    .navigation {
+      button {
+        margin-left: 3.2rem;
+      }
+    }
+  }
+
+  &__2 {
+    @include mix.box-rounded-right();
+    width: 24.4rem;
+    transition: all 0.4s;
+    z-index: -100;
 
     .navigation {
-      &__list {
-        padding-right: 1rem;
-      }
-
-      &__item {
-      }
-
       &__link {
-        span {
-        }
-
-        svg {
-        }
+        margin-right: 2.4rem;
+        @include mix.box-rounded-right();
 
         p {
-          width: 0;
-          opacity: 0;
-          transform: scale(0);
-          height: 0;
-          overflow: hidden;
-          white-space: nowrap;
+          padding-left: 1.6rem;
         }
 
         &--active {
-          span {
-          }
-
-          svg {
-          }
-
           p {
+            color: var.$color-gray-900;
           }
         }
       }
 
-      .btn {
-        &__label {
-          width: 0;
-          opacity: 0;
-          transform: scale(0);
-          height: 0;
-          overflow: hidden;
-          white-space: nowrap;
+      button {
+        padding-left: 1.6rem;
+      }
+    }
+
+    &--collapsed {
+      transform: translateX(-21rem);
+
+      .navigation {
+        &__link {
+          margin-right: 1rem;
+
+          p {
+            opacity: 0;
+          }
         }
       }
     }

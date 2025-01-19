@@ -1,5 +1,6 @@
 /** @format */
 
+import { Link } from "react-router-dom";
 import style from "./Logo.module.scss";
 
 function Logo({ small }) {
@@ -8,13 +9,13 @@ function Logo({ small }) {
     : "/images/logo/logo-large.svg";
 
   return (
-    <div className={style.logo__container}>
+    <Link className={style.logo__container} to="/">
       <img
         src={src}
         alt="logo"
         className={`${style.logo} ${!small ? style.logo__small : ""}`}
       />
-    </div>
+    </Link>
   );
 }
 
