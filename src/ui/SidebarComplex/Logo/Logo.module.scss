@@ -6,14 +6,10 @@
 
 .logo {
   padding: 4rem 0 4rem 3.2rem;
-  // height: 12.48px;
+  padding-left: 4rem;
 
   &__small {
     padding-left: 0;
-    transform: translateX(-23px);
-  }
-
-  &__i {
-    transform: translateX(-8px);
+    transform: translateX(-14px);
   }
 }

@@ -44,6 +44,18 @@ const NAV_ITEMS = [
 ];
 
 function Sidebar({ isCollapsed, toggleSidebar }) {
+  const handleMouseEnter = (key) => {
+    document
+      .querySelectorAll(`[data-key="${key}"]`)
+      .forEach((el) => el.classList.add(style["hover"]));
+  };
+
+  const handleMouseLeave = (key) => {
+    document
+      .querySelectorAll(`[data-key="${key}"]`)
+      .forEach((el) => el.classList.remove(style["hover"]));
+  };
+
   return (
     <aside className={style.col__main}>
       <div className={style.col__1}>
@@ -52,7 +64,13 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
         <nav className={style.navigation}>
           <ul className={style.navigation__list}>
             {NAV_ITEMS.map(({ to, Icon, iconWeight }) => (
-              <li className={style.navigation__item} key={to}>
+              <li
+                className={style.navigation__item}
+                key={to}
+                data-key={to}
+                onMouseEnter={() => handleMouseEnter(to)}
+                onMouseLeave={() => handleMouseLeave(to)}
+              >
                 <NavLink
                   to={to}
                   className={({ isActive }) =>
@@ -67,7 +85,13 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
               </li>
             ))}
           </ul>
-          <button onClick={toggleSidebar}>
+          <button
+            onClick={toggleSidebar}
+            data-key="sidebar-toggle"
+            onMouseEnter={() => handleMouseEnter("sidebar-toggle")}
+            onMouseLeave={() => handleMouseLeave("sidebar-toggle")}
+            className={style.navigation__btn}
+          >
             <ArrowFatLinesLeft
               size="2.4rem"
               weight="fill"
@@ -87,7 +111,13 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
         <nav className={style.navigation}>
           <ul className={style.navigation__list}>
             {NAV_ITEMS.map(({ to, label }) => (
-              <li className={style.navigation__item} key={to}>
+              <li
+                className={style.navigation__item}
+                key={to}
+                data-key={to}
+                onMouseEnter={() => handleMouseEnter(to)}
+                onMouseLeave={() => handleMouseLeave(to)}
+              >
                 <NavLink
                   to={to}
                   className={({ isActive }) =>
@@ -101,7 +131,13 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
               </li>
             ))}
           </ul>
-          <button onClick={toggleSidebar}>
+          <button
+            onClick={toggleSidebar}
+            data-key="sidebar-toggle"
+            onMouseEnter={() => handleMouseEnter("sidebar-toggle")}
+            onMouseLeave={() => handleMouseLeave("sidebar-toggle")}
+            className={style.navigation__btn}
+          >
             <p>Minimize Menu</p>
           </button>
         </nav>

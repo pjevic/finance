@@ -31,6 +31,10 @@
         gap: 4px;
       }
 
+      &__item.hover {
+        color: var.$color-gray-100;
+      }
+
       &__link {
         height: 5.6rem;
         position: relative;
@@ -71,6 +75,10 @@
         margin-bottom: 2.4rem;
         display: flex;
         align-items: center;
+      }
+
+      &__btn.hover {
+        color: var.$color-gray-100;
       }
     }
   }
