@@ -4,7 +4,9 @@ import style from "./Main.module.scss";
 
 function Main({ isCollapsed, children }) {
   return (
-    <main className={isCollapsed ? style.main : style.main__collapsed}>
+    <main
+      className={`${style.main} ${!isCollapsed ? style.main__collapsed : ""}`}
+    >
       {children}
     </main>
   );

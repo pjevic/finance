@@ -85,6 +85,12 @@
 
   &__1 {
     .navigation {
+      &__link {
+        p {
+          display: none;
+        }
+      }
+
       button {
         margin-left: 3.2rem;
       }
@@ -127,6 +133,102 @@
 
           p {
             opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mix.respond(tab-port) {
+  .col__main {
+    width: 100%;
+    height: 7.4rem;
+    bottom: 0;
+  }
+
+  .col {
+    &__1 {
+      width: 100%;
+      padding: 0;
+      @include mix.box-rounded-top(0.8rem);
+
+      .navigation {
+        flex-direction: row;
+        align-items: flex-end;
+
+        &__list {
+          width: 100%;
+          padding: 0;
+
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+
+        &__link {
+          height: 6.6rem;
+          width: 10.4rem;
+          @include mix.box-rounded-top(0.8rem);
+
+          flex-direction: column-reverse;
+
+          p {
+            display: inline;
+            margin-bottom: 1.2rem;
+            @include mix.typography(5, true, null);
+          }
+
+          svg {
+            margin: 0;
+          }
+
+          span {
+            height: 4px;
+            width: 100%;
+            top: 6.2rem;
+          }
+
+          &--active {
+            p {
+              color: var.$color-gray-900;
+            }
+          }
+        }
+
+        button {
+          display: none;
+        }
+      }
+    }
+
+    &__2 {
+      display: none;
+    }
+  }
+}
+
+@include mix.respond(phone) {
+  .col__main {
+    height: 5.2rem;
+  }
+
+  .col {
+    &__1 {
+      .navigation {
+        &__link {
+          height: auto;
+          width: auto;
+
+          p {
+            display: none;
+          }
+
+          svg {
+            margin: 1rem 2rem;
+          }
+
+          span {
+            top: 4rem;
           }
         }
       }

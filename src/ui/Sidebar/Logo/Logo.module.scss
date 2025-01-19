@@ -1,7 +1,13 @@
 /** @format */
 
+@use "../../../styles/abstracts/mixins.scss" as mix;
+
 .logo__container {
   display: flex;
+
+  @include mix.respond(tab-port) {
+    display: none;
+  }
 }
 
 .logo {

@@ -1,5 +1,11 @@
 /** @format */
 
+@use "../../styles/abstracts/mixins.scss" as mix;
+
 .layout {
   display: flex;
+
+  @include mix.respond(tab-port) {
+    flex-direction: column-reverse;
+  }
 }

@@ -63,7 +63,7 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
 
         <nav className={style.navigation}>
           <ul className={style.navigation__list}>
-            {NAV_ITEMS.map(({ to, Icon, iconWeight }) => (
+            {NAV_ITEMS.map(({ to, Icon, iconWeight, label }) => (
               <li
                 className={style.navigation__item}
                 key={to}
@@ -80,6 +80,7 @@ function Sidebar({ isCollapsed, toggleSidebar }) {
                   }
                 >
                   <span></span>
+                  <p>{label}</p>
                   <Icon size="2.4rem" weight={iconWeight} />
                 </NavLink>
               </li>
