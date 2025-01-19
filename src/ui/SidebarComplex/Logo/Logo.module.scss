@@ -1,0 +1,19 @@
+/** @format */
+
+.logo__container {
+  display: flex;
+}
+
+.logo {
+  padding: 4rem 0 4rem 3.2rem;
+  // height: 12.48px;
+
+  &__small {
+    padding-left: 0;
+    transform: translateX(-23px);
+  }
+
+  &__i {
+    transform: translateX(-8px);
+  }
+}

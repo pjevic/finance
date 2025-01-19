@@ -1,0 +1,152 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.col__main {
+  height: 100dvh;
+  @include mix.typography(3, true, var.$color-gray-300);
+
+  display: flex;
+}
+
+.col__1 {
+  background-color: var.$color-gray-900;
+
+  display: flex;
+  flex-direction: column;
+
+  .navigation {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__list {
+      padding: 2.4rem 0;
+
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__item {
+    }
+
+    &__link {
+      height: 5.6rem;
+
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+      }
+
+      svg {
+        margin-left: 3.2rem;
+      }
+
+      &--active {
+        background-color: var.$color-primary-beige-100;
+
+        span {
+          background-color: var.$color-secondary-green;
+        }
+
+        svg {
+          fill: var.$color-secondary-green;
+        }
+      }
+    }
+
+    button {
+      height: 5.6rem;
+      margin-left: 3.2rem;
+      margin-bottom: 2.4rem;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.col__2 {
+  @include mix.box-rounded-right();
+  background-color: var.$color-gray-900;
+  //   background-color: var.$color-gray-500;
+  width: 24.4rem;
+  transition: all 0.4s;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: -100;
+
+  .navigation {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__list {
+      padding: 2.4rem 0;
+
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__item {
+    }
+
+    &__link {
+      height: 5.6rem;
+      margin-right: 2.4rem;
+      @include mix.box-rounded-right();
+
+      display: flex;
+      align-items: center;
+
+      p {
+        padding-left: 1.6rem;
+      }
+
+      &--active {
+        background-color: var.$color-primary-beige-100;
+
+        p {
+          color: var.$color-gray-900;
+        }
+      }
+    }
+
+    button {
+      height: 5.6rem;
+      margin-left: 1.6rem;
+      margin-bottom: 2.4rem;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &--collapsed {
+    transform: translateX(-21rem);
+
+    .navigation {
+      &__link {
+        margin-right: 1rem;
+
+        p {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
