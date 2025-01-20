@@ -8,13 +8,13 @@ import {
 } from "react-router-dom";
 
 import AppLayout from "./ui/AppLayout/AppLayout";
-import Login from "./pages/Login";
-import Overview from "./pages/Overview";
-import Transactions from "./pages/Transactions";
-import Budgets from "./pages/Budgets";
-import Pots from "./pages/Pots";
-import RecurringBills from "./pages/RecurringBills";
-import PageNotFound from "./pages/PageNotFound";
+import Login from "./pages/Login/Login";
+import Overview from "./pages/Overview/Overview";
+import Transactions from "./pages/Transactions/Transactions";
+import Budgets from "./pages/Budgets/Budgets";
+import Pots from "./pages/Pots/Pots";
+import RecurringBills from "./pages/RecurringBills/RecurringBills";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   return (
