@@ -37,6 +37,8 @@
 
       &__link {
         height: 5.6rem;
+        transition: all 0.3s;
+
         position: relative;
         display: flex;
         align-items: center;
@@ -73,6 +75,8 @@
       button {
         height: 5.6rem;
         margin-bottom: 2.4rem;
+        transition: all 0.3s;
+
         display: flex;
         align-items: center;
       }
