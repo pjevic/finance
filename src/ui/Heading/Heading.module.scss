@@ -1,0 +1,8 @@
+/** @format */
+
+@use "../../styles/abstracts/mixins.scss" as mix;
+@use "../../styles/abstracts/variables.scss" as var;
+
+.heading {
+  @include mix.typography(1, true, var.$color-gray-900);
+}
