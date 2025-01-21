@@ -2,6 +2,12 @@
 
 @use "../../styles/abstracts/variables.scss" as var;
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .spinner {
   width: 50px;
   padding: 8px;
