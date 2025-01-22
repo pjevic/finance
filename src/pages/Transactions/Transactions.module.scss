@@ -1,4 +1,11 @@
 /** @format */
 
+@use "../../styles/abstracts/variables.scss" as var;
+
 .transactions {
+  &__table {
+    padding: 3.2rem;
+    background-color: var.$color-white;
+    border-radius: 1.2rem;
+  }
 }
