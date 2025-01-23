@@ -1,11 +1,11 @@
 /** @format */
 
 import { useQuery } from "@tanstack/react-query";
-import { getTransactions } from "../services/apiTransactions";
+import { getTransactions } from "../../services/apiTransactions";
 
 export function useTransactions() {
   const {
-    isLoading,
+    isLoading: isLoadingTransactions,
     data: transactions,
     error,
   } = useQuery({
@@ -13,5 +13,5 @@ export function useTransactions() {
     queryFn: getTransactions,
   });
 
-  return { isLoading, transactions, error };
+  return { isLoadingTransactions, transactions, error };
 }

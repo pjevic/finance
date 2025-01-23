@@ -1,6 +1,6 @@
 /** @format */
 
-import { useTransactions } from "../../../hooks/useTransactions";
+import { useTransactions } from "../useTransactions";
 
 import Spinner from "../../../ui/Spinner/Spinner";
 import Table from "../../../ui/Table/Table";
@@ -8,9 +8,9 @@ import Table from "../../../ui/Table/Table";
 import styles from "./TransactionsTable.module.scss";
 
 function TransactionsTable() {
-  const { isLoading, transactions } = useTransactions();
+  const { isLoadingTransactions, transactions } = useTransactions();
 
-  if (isLoading) return <Spinner />;
+  if (isLoadingTransactions) return <Spinner />;
 
   return (
     <div className={styles.table}>
