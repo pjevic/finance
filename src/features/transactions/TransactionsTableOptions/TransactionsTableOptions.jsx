@@ -2,17 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useTransactionsCategories } from "../useTransactionsCategories";
-import SortBy from "../../../ui/SortBy/SortBy";
+import CustomSelect from "../../../ui/CustomSelect/CustomSelect";
+
 import styles from "./TransactionsTableOptions.module.scss";
 
-const SORT_OPTIONS = [
-  { value: "latest", label: "Latest" },
-  { value: "oldest", label: "Oldest" },
-  { value: "a-z", label: "A-Z" },
-  { value: "z-a", label: "Z-A" },
-  { value: "highest", label: "Highest" },
-  { value: "lowest", label: "Lowest" },
-];
+const SORT_BY = ["Latest", "Oldest", "A-Z", "Z-A", "Highest", "Lowest"];
 
 function TransactionsTableOptions() {
   const { transactionsCategories } = useTransactionsCategories();
@@ -22,10 +16,7 @@ function TransactionsTableOptions() {
     if (transactionsCategories?.length) {
       const uniqueCategories = Array.from(
         new Set(transactionsCategories.map((item) => item.category))
-      ).map((category) => ({
-        value: category,
-        label: category,
-      }));
+      ).filter(Boolean);
 
       setCategories(uniqueCategories);
     }
@@ -34,8 +25,8 @@ function TransactionsTableOptions() {
   return (
     <div className={styles["table-options"]}>
       <div className={styles["table-options__select"]}>
-        <SortBy label="Sort by" options={SORT_OPTIONS} />
-        <SortBy label="Category" options={categories} />
+        <CustomSelect options={SORT_BY} />
+        <CustomSelect options={categories} />
       </div>
     </div>
   );
