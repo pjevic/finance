@@ -1,6 +1,8 @@
 /** @format */
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import { useTransactionsCategories } from "../useTransactionsCategories";
 import CustomSelect from "../../../ui/CustomSelect/CustomSelect";
 
@@ -12,6 +14,8 @@ function TransactionsTableOptions() {
   const { transactionsCategories } = useTransactionsCategories();
   const [categories, setCategories] = useState(["All Transactions"]);
 
+  const [searchParams, setSearechParams] = useSearchParams();
+
   // Handlers for CustomSelect
   const handleSortChange = (sortOption) => {
     console.log("Sort selected:", sortOption);
@@ -21,6 +25,9 @@ function TransactionsTableOptions() {
   const handleCategoryChange = (category) => {
     console.log("Category selected:", category);
     // filtering logic here
+
+    searchParams.set("category", category);
+    setSearechParams(searchParams);
   };
 
   useEffect(() => {
@@ -29,7 +36,7 @@ function TransactionsTableOptions() {
         new Set(transactionsCategories.map((item) => item.category))
       );
 
-      setCategories(["All Transaction", ...uniqueCategories]);
+      setCategories(["All Transactions", ...uniqueCategories]);
     }
   }, [transactionsCategories]);
 
