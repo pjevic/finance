@@ -16,16 +16,14 @@ function TransactionsTableOptions() {
 
   const [searchParams, setSearechParams] = useSearchParams();
 
-  // Handlers for CustomSelect
+  // Sorting
   const handleSortChange = (sortOption) => {
-    console.log("Sort selected:", sortOption);
-    // sorting logic here
+    searchParams.set("sortBy", sortOption);
+    setSearechParams(searchParams);
   };
 
+  // Filtering
   const handleCategoryChange = (category) => {
-    console.log("Category selected:", category);
-    // filtering logic here
-
     searchParams.set("category", category);
     setSearechParams(searchParams);
   };

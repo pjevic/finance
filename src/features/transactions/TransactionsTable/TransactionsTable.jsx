@@ -14,13 +14,34 @@ function TransactionsTable() {
 
   if (isLoadingTransactions) return <Spinner />;
 
+  const sortValue = searchParams.get("sortBy") || "Latest";
   const filterValue = searchParams.get("category") || "All Transactions";
+
   const filteredTransactions =
     filterValue === "All Transactions"
       ? transactions
       : transactions.filter(
           (transaction) => transaction.category === filterValue
         );
+
+  const sortedTransactions = filteredTransactions.sort((a, b) => {
+    switch (sortValue) {
+      case "Latest":
+        return new Date(b.date) - new Date(a.date);
+      case "Oldest":
+        return new Date(a.date) - new Date(b.date);
+      case "A-Z":
+        return a.name.localeCompare(b.name);
+      case "Z-A":
+        return b.name.localeCompare(a.name);
+      case "Highest":
+        return Math.abs(b.amount) - Math.abs(a.amount);
+      case "Lowest":
+        return Math.abs(a.amount) - Math.abs(b.amount);
+      default:
+        return 0;
+    }
+  });
 
   return (
     <div className={styles.table}>
@@ -33,7 +54,7 @@ function TransactionsTable() {
             "Amount",
           ]}
         />
-        <Table.Body rows={filteredTransactions} />
+        <Table.Body rows={sortedTransactions} />
       </Table>
     </div>
   );
