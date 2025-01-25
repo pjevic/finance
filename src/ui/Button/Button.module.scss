@@ -1,0 +1,55 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+.button {
+  padding: 1rem 1.6rem;
+  @include mix.typography(4, false, var.$color-gray-900);
+  border: 1px solid var.$color-primary-beige-500;
+  border-radius: 0.8rem;
+  transition: all 0.25s ease-in-out;
+
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+
+  gap: 1.6rem;
+
+  &:hover {
+    background-color: var.$color-primary-beige-500;
+    color: var.$color-white;
+
+    svg {
+      fill: var.$color-white;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    transform: translateY(3px);
+
+    svg {
+      fill: var.$color-gray-500;
+    }
+  }
+
+  &__square {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    gap: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      background-color: var.$color-gray-900;
+      color: var.$color-white;
+      gap: 0;
+    }
+  }
+}

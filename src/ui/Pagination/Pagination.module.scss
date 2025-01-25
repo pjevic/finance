@@ -1,0 +1,14 @@
+/** @format */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2.4rem;
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+}

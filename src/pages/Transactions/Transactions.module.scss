@@ -3,6 +3,9 @@
 @use "../../styles/abstracts/variables.scss" as var;
 
 .transactions {
+  padding-bottom: 3.2rem;
+  margin-bottom: 3.2rem;
+
   &__table {
     padding: 3.2rem;
     background-color: var.$color-white;

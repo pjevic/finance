@@ -7,6 +7,7 @@ import Spinner from "../../../ui/Spinner/Spinner";
 import Table from "../../../ui/Table/Table";
 
 import styles from "./TransactionsTable.module.scss";
+import Pagination from "../../../ui/Pagination/Pagination";
 
 function TransactionsTable() {
   const { isLoadingTransactions, transactions } = useTransactions();
@@ -55,6 +56,9 @@ function TransactionsTable() {
           ]}
         />
         <Table.Body rows={sortedTransactions} />
+        <Table.Footer>
+          <Pagination />
+        </Table.Footer>
       </Table>
     </div>
   );

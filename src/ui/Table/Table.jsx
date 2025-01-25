@@ -44,7 +44,12 @@ const Body = ({ rows }) => (
   </div>
 );
 
+const Footer = ({ children }) => (
+  <footer className={style.footer}>{children}</footer>
+);
+
 Table.Header = Header;
 Table.Body = Body;
+Table.Footer = Footer;
 
 export default Table;
