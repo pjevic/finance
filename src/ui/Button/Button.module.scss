@@ -2,17 +2,16 @@
 
 @use "../../styles/abstracts/variables.scss" as var;
 @use "../../styles/abstracts/mixins.scss" as mix;
+
 .button {
-  padding: 1rem 1.6rem;
   @include mix.typography(4, false, var.$color-gray-900);
   border: 1px solid var.$color-primary-beige-500;
   border-radius: 0.8rem;
   transition: all 0.25s ease-in-out;
 
   display: flex;
-  text-align: center;
+  align-items: center;
   justify-content: center;
-
   gap: 1.6rem;
 
   &:hover {
@@ -36,12 +35,15 @@
     }
   }
 
+  &__basic {
+    padding: 1rem 1.6rem;
+  }
+
   &__square {
     width: 4rem;
     height: 4rem;
     padding: 0;
     gap: 0;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,6 +51,11 @@
     &--active {
       background-color: var.$color-gray-900;
       color: var.$color-white;
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 0;
 
       &:hover {

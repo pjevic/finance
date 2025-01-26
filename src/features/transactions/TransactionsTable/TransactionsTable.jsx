@@ -57,7 +57,7 @@ function TransactionsTable() {
         />
         <Table.Body rows={sortedTransactions} />
         <Table.Footer>
-          <Pagination totalItems={49} />
+          <Pagination totalItems={99} />
         </Table.Footer>
       </Table>
     </div>
