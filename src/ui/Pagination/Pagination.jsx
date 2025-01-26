@@ -6,7 +6,7 @@ import { CaretDown } from "@phosphor-icons/react";
 import Button from "../Button/Button";
 import styles from "./Pagination.module.scss";
 
-const PAGE_SIZE = 10;
+import { PAGE_SIZE } from "../../utils/constants";
 
 function Pagination({ totalItems }) {
   const [searchParams, setSearchParams] = useSearchParams();

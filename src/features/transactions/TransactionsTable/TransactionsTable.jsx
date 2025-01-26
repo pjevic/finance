@@ -9,6 +9,8 @@ import Table from "../../../ui/Table/Table";
 import styles from "./TransactionsTable.module.scss";
 import Pagination from "../../../ui/Pagination/Pagination";
 
+import { PAGE_SIZE } from "../../../utils/constants";
+
 function TransactionsTable() {
   const { isLoadingTransactions, transactions } = useTransactions();
   const [searchParams] = useSearchParams();
@@ -17,7 +19,9 @@ function TransactionsTable() {
 
   const sortValue = searchParams.get("sortBy") || "Latest";
   const filterValue = searchParams.get("category") || "All Transactions";
+  const currentPage = Number(searchParams.get("page")) || 1;
 
+  // Filter transactions
   const filteredTransactions =
     filterValue === "All Transactions"
       ? transactions
@@ -25,6 +29,7 @@ function TransactionsTable() {
           (transaction) => transaction.category === filterValue
         );
 
+  // Sort transactions
   const sortedTransactions = filteredTransactions.sort((a, b) => {
     switch (sortValue) {
       case "Latest":
@@ -44,20 +49,27 @@ function TransactionsTable() {
     }
   });
 
+  // Pagination logic
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const paginatedTransactions = sortedTransactions.slice(
+    startIndex,
+    startIndex + PAGE_SIZE
+  );
+
   return (
     <div className={styles.table}>
       <Table data={transactions}>
         <Table.Header
           columns={[
             "Recipient / Sender",
-            "Catergory",
+            "Category",
             "Transaction Date",
             "Amount",
           ]}
         />
-        <Table.Body rows={sortedTransactions} />
+        <Table.Body rows={paginatedTransactions} />
         <Table.Footer>
-          <Pagination totalItems={99} />
+          <Pagination totalItems={sortedTransactions.length} />
         </Table.Footer>
       </Table>
     </div>

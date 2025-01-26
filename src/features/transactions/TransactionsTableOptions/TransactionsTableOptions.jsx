@@ -5,10 +5,9 @@ import { useSearchParams } from "react-router-dom";
 
 import { useTransactionsCategories } from "../useTransactionsCategories";
 import CustomSelect from "../../../ui/CustomSelect/CustomSelect";
-
 import styles from "./TransactionsTableOptions.module.scss";
 
-const SORT_BY = ["Latest", "Oldest", "A-Z", "Z-A", "Highest", "Lowest"];
+import { SORT_BY } from "../../../utils/constants";
 
 function TransactionsTableOptions() {
   const { transactionsCategories } = useTransactionsCategories();
