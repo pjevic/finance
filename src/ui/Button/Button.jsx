@@ -8,9 +8,15 @@ function Button({
   icon,
   iconPosition = "left",
   children,
+  onClick,
+  disabled,
 }) {
   return (
-    <button className={`${styles.button} ${styles[`button__${type}`]}`}>
+    <button
+      className={`${styles.button} ${styles[`button__${type}`]}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {iconPosition === "left" && (
         <span className={styles.button__icon}>{icon}</span>
       )}

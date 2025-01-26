@@ -9,7 +9,7 @@
   border-radius: 0.8rem;
   transition: all 0.25s ease-in-out;
 
-  display: inline-flex;
+  display: flex;
   text-align: center;
   justify-content: center;
 
@@ -50,6 +50,12 @@
       background-color: var.$color-gray-900;
       color: var.$color-white;
       gap: 0;
+
+      &:hover {
+        cursor: not-allowed;
+        background-color: var.$color-gray-900;
+        color: var.$color-white;
+      }
     }
   }
 }
