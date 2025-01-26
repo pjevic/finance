@@ -1,5 +1,5 @@
 /** @format */
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { CaretDown } from "@phosphor-icons/react";
 
@@ -7,16 +7,27 @@ import Button from "../Button/Button";
 import styles from "./Pagination.module.scss";
 
 const PAGE_SIZE = 10;
-const VISIBLE_PAGES = 5;
 
 function Pagination({ totalItems }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [visiblePages, setVisiblePages] = useState(5); // Default for desktop
 
   const currentPage = Number(searchParams.get("page")) || 1;
   const pageCount = useMemo(
     () => Math.ceil(totalItems / PAGE_SIZE),
     [totalItems]
   );
+
+  useEffect(() => {
+    const updateVisiblePages = () => {
+      setVisiblePages(window.innerWidth < 400 ? 4 : 5); // Adjust based on screen size
+    };
+
+    updateVisiblePages();
+    window.addEventListener("resize", updateVisiblePages);
+
+    return () => window.removeEventListener("resize", updateVisiblePages);
+  }, []);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -38,42 +49,59 @@ function Pagination({ totalItems }) {
   };
 
   const getVisiblePages = () => {
-    if (pageCount <= VISIBLE_PAGES) {
-      // If total pages are less than or equal to 5, show all pages
+    const hasLeftEllipsis = currentPage > 2;
+    const hasRightEllipsis = currentPage < pageCount - 1;
+
+    const showAllPages = pageCount <= visiblePages;
+
+    const getMobilePages = () => {
+      if (!hasLeftEllipsis && hasRightEllipsis) {
+        return [1, 2, "...", pageCount];
+      }
+      if (hasLeftEllipsis && !hasRightEllipsis) {
+        return [1, "...", pageCount - 1, pageCount];
+      }
+      if (hasLeftEllipsis && hasRightEllipsis) {
+        return [1, "...", currentPage, "..."];
+      }
+    };
+
+    const getDesktopPages = () => {
+      if (!hasLeftEllipsis && hasRightEllipsis) {
+        return [1, 2, 3, 4, "...", pageCount];
+      }
+      if (hasLeftEllipsis && !hasRightEllipsis) {
+        return [
+          1,
+          "...",
+          pageCount - 3,
+          pageCount - 2,
+          pageCount - 1,
+          pageCount,
+        ];
+      }
+      if (hasLeftEllipsis && hasRightEllipsis) {
+        return [
+          1,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          pageCount,
+        ];
+      }
+    };
+
+    if (showAllPages) {
       return Array.from({ length: pageCount }, (_, index) => index + 1);
     }
 
-    const pages = [];
-    const hasLeftEllipsis = currentPage > 3;
-    const hasRightEllipsis = currentPage < pageCount - 2;
-
-    if (!hasLeftEllipsis && hasRightEllipsis) {
-      // Near the beginning (1, 2, 3, 4, ..., 10)
-      pages.push(1, 2, 3, 4, "...", pageCount);
-    } else if (hasLeftEllipsis && !hasRightEllipsis) {
-      // Near the end (1, ..., 7, 8, 9, 10)
-      pages.push(
-        1,
-        "...",
-        pageCount - 3,
-        pageCount - 2,
-        pageCount - 1,
-        pageCount
-      );
-    } else if (hasLeftEllipsis && hasRightEllipsis) {
-      // In the middle (1, ..., 4, 5, 6, ..., 10)
-      pages.push(
-        1,
-        "...",
-        currentPage - 1,
-        currentPage,
-        currentPage + 1,
-        "...",
-        pageCount
-      );
+    if (visiblePages === 4) {
+      return getMobilePages();
     }
 
-    return pages;
+    return getDesktopPages();
   };
 
   if (pageCount <= 1) return null;
@@ -100,7 +128,7 @@ function Pagination({ totalItems }) {
             key={index}
             type={page === currentPage ? "square--active" : "square"}
             onClick={() => typeof page === "number" && handlePageClick(page)}
-            disabled={page === "..."} // Disable ellipsis buttons
+            disabled={page === "..."}
           >
             {page}
           </Button>
