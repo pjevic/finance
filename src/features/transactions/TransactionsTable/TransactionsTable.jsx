@@ -13,15 +13,23 @@ import { PAGE_SIZE } from "../../../utils/constants";
 
 function TransactionsTable() {
   const { isLoadingTransactions, transactions } = useTransactions();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   if (isLoadingTransactions) return <Spinner />;
 
   const sortValue = searchParams.get("sortBy") || "Latest";
   const filterValue = searchParams.get("category") || "All Transactions";
+  const searchQuery = searchParams.get("search") || "";
   const currentPage = Number(searchParams.get("page")) || 1;
 
-  // Filter transactions
+  // Update search query in URL
+  const handleSearchChange = (event) => {
+    searchParams.set("search", event.target.value);
+    searchParams.set("page", 1); // Reset to page 1 on search
+    setSearchParams(searchParams);
+  };
+
+  // Filter transactions by category
   const filteredTransactions =
     filterValue === "All Transactions"
       ? transactions
@@ -29,8 +37,13 @@ function TransactionsTable() {
           (transaction) => transaction.category === filterValue
         );
 
+  // Search transactions by name or recipient/sender
+  const searchedTransactions = filteredTransactions.filter((transaction) =>
+    transaction.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   // Sort transactions
-  const sortedTransactions = filteredTransactions.sort((a, b) => {
+  const sortedTransactions = searchedTransactions.sort((a, b) => {
     switch (sortValue) {
       case "Latest":
         return new Date(b.date) - new Date(a.date);

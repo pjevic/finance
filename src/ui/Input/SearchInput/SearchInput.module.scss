@@ -1,0 +1,19 @@
+/** @format */
+
+@use "../../../styles/abstracts/variables.scss" as var;
+
+.input {
+  position: relative;
+  width: 32rem;
+
+  &__icon-container {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+
+    svg {
+      fill: var.$color-gray-900;
+    }
+  }
+}

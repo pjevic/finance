@@ -3,6 +3,10 @@
 @use "../../../styles/abstracts/variables.scss" as var;
 
 .table-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   &__select {
     display: flex;
     align-items: center;
