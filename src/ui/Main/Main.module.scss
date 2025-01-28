@@ -10,16 +10,20 @@
 
   transition: all 0.4s;
 
-  @include mix.respond(tab-port) {
-    margin-left: 0;
-  }
-
   &__collapsed {
     margin-left: 30rem;
     transition: all 0.4s;
+  }
 
-    @include mix.respond(tab-port) {
+  @include mix.respond(tab-port) {
+    margin-left: 0;
+
+    &__collapsed {
       margin-left: 0;
     }
+  }
+
+  @include mix.respond(phone) {
+    padding: 2.4rem 1.6rem;
   }
 }

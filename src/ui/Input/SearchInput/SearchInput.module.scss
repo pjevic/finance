@@ -1,6 +1,7 @@
 /** @format */
 
 @use "../../../styles/abstracts/variables.scss" as var;
+@use "../../../styles/abstracts/mixins.scss" as mix;
 
 .input {
   position: relative;
@@ -15,5 +16,10 @@
     svg {
       fill: var.$color-gray-900;
     }
+  }
+
+  @include mix.respond(tab-port) {
+    width: 100%;
+    margin-right: 2.4rem;
   }
 }

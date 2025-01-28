@@ -33,8 +33,14 @@ const Body = ({ rows }) => (
             />
             <span className={style.name}>{name}</span>
           </div>
-          <p className={style.table__cell}>{category}</p>
-          <p className={style.table__cell}>{formatDate(date)}</p>
+          <p
+            className={`${style.table__cell} ${style["table__cell--category"]}`}
+          >
+            {category}
+          </p>
+          <p className={`${style.table__cell} ${style["table__cell--date"]}`}>
+            {formatDate(date)}
+          </p>
           <data value={amount} className={`${style.amount} ${amountClass}`}>
             {formatToDollarsWithPrefix(amount)}
           </data>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Funnel, SortAscending } from "@phosphor-icons/react";
 
 import { useTransactionsCategories } from "../useTransactionsCategories";
 import SearchInput from "../../../ui/Input/SearchInput/SearchInput";
@@ -52,12 +53,14 @@ function TransactionsTableOptions() {
           label="Sort by"
           options={SORT_BY}
           onChange={handleSortChange}
+          Icon={SortAscending}
         />
         {categories.length > 0 && (
           <CustomSelect
             label="Category"
             options={categories}
             onChange={handleCategoryChange}
+            Icon={Funnel}
           />
         )}
       </div>

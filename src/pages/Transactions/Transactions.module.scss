@@ -1,6 +1,7 @@
 /** @format */
 
 @use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
 
 .transactions {
   padding-bottom: 3.2rem;
@@ -10,5 +11,19 @@
     padding: 3.2rem;
     background-color: var.$color-white;
     border-radius: 1.2rem;
+  }
+
+  @include mix.respond(tab-port) {
+    padding-bottom: 10.6rem;
+    margin-bottom: 10.6rem;
+  }
+
+  @include mix.respond(phone) {
+    padding-bottom: 8.4rem;
+    margin-bottom: 8.4rem;
+
+    &__table {
+      padding: 2rem;
+    }
   }
 }

@@ -1,5 +1,7 @@
 /** @format */
 
+@use "../../styles/abstracts/mixins.scss" as mix;
+
 .pagination {
   display: flex;
   align-items: center;

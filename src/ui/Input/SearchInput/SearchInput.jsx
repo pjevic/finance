@@ -11,7 +11,7 @@ function SearchInput({ onSearchChange }) {
 
   return (
     <div className={styles.input}>
-      <Input placeholder="Search transactions" onChange={handleInputChange} />
+      <Input placeholder="Search" onChange={handleInputChange} />
       <span className={styles["input__icon-container"]}>
         <MagnifyingGlass size="1.6rem" />
       </span>

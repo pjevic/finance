@@ -4,13 +4,14 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import styles from "./CustomSelect.module.scss";
 
-function CustomSelect({ options, onChange, defaultOption, label }) {
+function CustomSelect({ options, onChange, defaultOption, label, Icon }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     defaultOption || options.at(0)
   );
   const dropdownRef = useRef(null);
-  const [width, setWidth] = useState(0);
+  const [optionsWidth, setOptionsWidth] = useState(0);
+  const [toggleIconWidth, setToggleIconWidth] = useState("auto");
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
@@ -49,11 +50,27 @@ function CustomSelect({ options, onChange, defaultOption, label }) {
               : longest,
           0
         );
-        setWidth(longestOption + 72); // Adding padding to account for icons and spacing
+        setOptionsWidth(longestOption + 72); // Adding padding to account for icons and spacing
       }
     };
 
     calculateWidth();
+
+    // Adjust width based on screen size
+    const handleResize = () => {
+      const mediaQuery = window.matchMedia("(max-width: 37.5em)");
+      if (mediaQuery.matches) {
+        setToggleIconWidth("2rem"); // Set toggle icon width to 2rem on phone view
+      } else {
+        setToggleIconWidth("auto"); // Reset toggle icon width for desktop view
+        calculateWidth(); // Recalculate width for options in desktop view
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
   }, [options]);
 
   useEffect(() => {
@@ -72,9 +89,22 @@ function CustomSelect({ options, onChange, defaultOption, label }) {
       <div
         ref={dropdownRef}
         className={styles.customSelect}
-        style={{ width: `${width}px` }}
+        style={{ width: isOpen ? `${optionsWidth}px` : "auto" }} // Parent width stays based on the options width
       >
         {/* Toggle */}
+        <span
+          className={styles["customSelect__icon-container"]}
+          onClick={toggleDropdown}
+          role="button"
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
+          tabIndex="0"
+          style={{
+            width: toggleIconWidth, // Apply toggle icon width separately
+          }}
+        >
+          <Icon weight="fill" size={toggleIconWidth} />
+        </span>
         <button
           type="button"
           className={`${styles["customSelect__toggle"]} ${
@@ -95,7 +125,6 @@ function CustomSelect({ options, onChange, defaultOption, label }) {
         </button>
 
         {/* Options */}
-
         <ul
           className={`${styles["customSelect__menu"]} ${
             isOpen ? styles["customSelect__menu--visible"] : ""

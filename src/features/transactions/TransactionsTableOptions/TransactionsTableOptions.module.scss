@@ -1,6 +1,7 @@
 /** @format */
 
 @use "../../../styles/abstracts/variables.scss" as var;
+@use "../../../styles/abstracts/mixins.scss" as mix;
 
 .table-options {
   display: flex;
@@ -12,5 +13,8 @@
     align-items: center;
     justify-self: flex-end;
     gap: 2.4rem;
+  }
+
+  @include mix.respond(phone) {
   }
 }

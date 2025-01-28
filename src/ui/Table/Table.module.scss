@@ -79,4 +79,53 @@
   .footer {
     margin-top: 2.4rem;
   }
+
+  @include mix.respond(phone) {
+    &__header {
+      display: none;
+    }
+
+    &__row {
+      padding: 1.6rem 0rem;
+      grid-template-columns: 44fr 147fr 112fr;
+      gap: 0;
+      column-gap: 0.4rem;
+
+      position: relative;
+
+      &:first-child {
+        margin-top: 1.6rem;
+      }
+    }
+
+    &__cell {
+      display: block;
+
+      img {
+        position: absolute;
+      }
+
+      .name {
+        position: absolute;
+
+        left: 4.6rem;
+      }
+
+      &--category {
+        grid-column: 2/3;
+        grid-row: 2/3;
+      }
+
+      &--date {
+        grid-column: 3/4;
+        grid-row: 2/3;
+        justify-self: end;
+      }
+    }
+
+    .amount {
+      grid-column: 3/4;
+      grid-row: 1/2;
+    }
+  }
 }

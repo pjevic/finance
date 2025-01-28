@@ -11,6 +11,7 @@
 
 .label {
   @include mix.typography(4, false, var.$color-gray-500);
+  white-space: nowrap;
 }
 
 .customSelect {
@@ -20,9 +21,23 @@
   @include mix.typography(4, false, var.$color-gray-900);
 
   position: relative;
+  width: 100%; // Ensures the dropdown spans its container
+
+  &__icon-container {
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    width: 4rem; // Compact width for icon container
+    cursor: pointer;
+
+    @include mix.respond(phone) {
+      display: flex;
+      width: 2rem; // Adjust width on mobile for smaller screens
+    }
+  }
 
   &__toggle {
-    width: 100%;
+    width: 100%; // Button spans the full width
     padding: 1rem 2rem;
     cursor: pointer;
 
@@ -45,8 +60,8 @@
   &__menu {
     position: absolute;
     top: 120%;
-    right: 0;
-    width: 100%;
+    left: 0; // Aligns with the container
+    width: 100%; // Ensures dropdown matches container width
     background-color: var.$color-white;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
     border-radius: 0.8rem;
@@ -82,6 +97,30 @@
 
     &[aria-selected="true"] {
       @include mix.typography(4, true, var.$color-gray-900);
+    }
+  }
+}
+
+@include mix.respond(phone) {
+  .label {
+    display: none;
+  }
+
+  .customSelect {
+    border: none;
+
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+
+    &__toggle {
+      display: none; // Hide toggle for mobile
+    }
+
+    &__menu {
+      position: absolute;
+      left: 0; // Keep dropdown aligned with container
+      width: 100%; // Maintain full container width on mobile
     }
   }
 }

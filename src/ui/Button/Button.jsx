@@ -20,7 +20,7 @@ function Button({
       {iconPosition === "left" && (
         <span className={styles.button__icon}>{icon}</span>
       )}
-      {label && <span>{label}</span>}
+      {label && <span className={styles.button__label}>{label}</span>}
       {iconPosition === "right" && (
         <span className={styles.button__icon}>{icon}</span>
       )}

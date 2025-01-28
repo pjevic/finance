@@ -214,9 +214,11 @@
 @include mix.respond(phone) {
   .col__main {
     height: 5.2rem;
+    z-index: 100;
   }
 
   .col {
+    z-index: 100;
     &__1 {
       .navigation {
         &__link {
