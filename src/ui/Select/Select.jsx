@@ -55,13 +55,17 @@ function Select({ options, onChange, label, Icon }) {
       options.map((option, i) => (
         <li
           key={i}
-          className={styles["select__dropdown-option"]}
+          className={`${styles["select__dropdown-option"]} ${
+            selectedOption === option
+              ? styles["select__dropdown-option--active"]
+              : ""
+          }`}
           onClick={() => handleSelect(option)}
         >
           {option}
         </li>
       )),
-    [options, handleSelect]
+    [options, selectedOption, handleSelect]
   );
 
   return (
