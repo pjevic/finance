@@ -6,7 +6,7 @@ import { Funnel, SortAscending } from "@phosphor-icons/react";
 
 import { useTransactionsCategories } from "../useTransactionsCategories";
 import SearchInput from "../../../ui/Input/SearchInput/SearchInput";
-import CustomSelect from "../../../ui/CustomSelect/CustomSelect";
+import Select from "../../../ui/Select/Select";
 import styles from "./TransactionsTableOptions.module.scss";
 
 import { SORT_BY } from "../../../utils/constants";
@@ -49,18 +49,20 @@ function TransactionsTableOptions() {
     <div className={styles["table-options"]}>
       <SearchInput onSearchChange={handleSearchChange} />
       <div className={styles["table-options__select"]}>
-        <CustomSelect
+        <Select
           label="Sort by"
           options={SORT_BY}
           onChange={handleSortChange}
           Icon={SortAscending}
+          defaultOption={SORT_BY.at(0)}
         />
         {categories.length > 0 && (
-          <CustomSelect
+          <Select
             label="Category"
             options={categories}
             onChange={handleCategoryChange}
             Icon={Funnel}
+            defaultOption={categories.at(0)}
           />
         )}
       </div>
