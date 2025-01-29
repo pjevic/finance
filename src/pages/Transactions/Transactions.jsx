@@ -2,7 +2,7 @@
 
 import Heading from "../../ui/Heading/Heading";
 import TransactionsTable from "../../features/transactions/TransactionsTable/TransactionsTable";
-import TransactionsTableOptions from "../../features/transactions/TransactionsTableOptions/TransactionsTableOptions";
+import TransactionsTableOperations from "../../features/transactions/TransactionsTableOperations/TransactionsTableOperations";
 
 import styles from "./Transactions.module.scss";
 
@@ -12,7 +12,7 @@ function Transactions() {
       <Heading>Transactions</Heading>
 
       <div className={styles.transactions__table}>
-        <TransactionsTableOptions />
+        <TransactionsTableOperations />
         <TransactionsTable />
       </div>
     </div>

@@ -7,11 +7,11 @@ import { Funnel, SortAscending } from "@phosphor-icons/react";
 import { useTransactionsCategories } from "../useTransactionsCategories";
 import SearchInput from "../../../ui/Input/SearchInput/SearchInput";
 import Select from "../../../ui/Select/Select";
-import styles from "./TransactionsTableOptions.module.scss";
+import styles from "./TransactionsTableOperations.module.scss";
 
 import { SORT_BY } from "../../../utils/constants";
 
-function TransactionsTableOptions() {
+function TransactionsTableOperations() {
   const { transactionsCategories } = useTransactionsCategories();
   const [categories, setCategories] = useState(["All Transactions"]);
   const [searchParams, setSearechParams] = useSearchParams();
@@ -70,4 +70,4 @@ function TransactionsTableOptions() {
   );
 }
 
-export default TransactionsTableOptions;
+export default TransactionsTableOperations;

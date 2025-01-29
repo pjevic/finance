@@ -20,7 +20,7 @@ function Pagination({ totalItems }) {
 
   useEffect(() => {
     const updateVisiblePages = () => {
-      setVisiblePages(window.innerWidth < 400 ? 4 : 5); // Adjust based on screen size
+      setVisiblePages(window.innerWidth < 450 ? 4 : 5); // Adjust based on screen size
     };
 
     updateVisiblePages();
