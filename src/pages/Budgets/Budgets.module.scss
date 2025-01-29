@@ -1,0 +1,19 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.budgets {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3.2rem;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 428fr 608fr;
+    gap: 2.4rem;
+  }
+}

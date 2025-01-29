@@ -126,7 +126,7 @@ function Pagination({ totalItems }) {
         {getVisiblePages().map((page, index) => (
           <Button
             key={index}
-            type={page === currentPage ? "square--active" : "square"}
+            variant={page === currentPage ? "square--active" : "square"}
             onClick={() => typeof page === "number" && handlePageClick(page)}
             disabled={page === "..."}
           >
