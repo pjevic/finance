@@ -2,8 +2,8 @@
 
 import Heading from "../../ui/Heading/Heading";
 import Button from "../../ui/Button/Button";
-import BudgetSummary from "../../features/budgets/BudgetSummary/BudgetSummary";
-import BudgetSections from "../../features/budgets/BudgetSections/BudgetSections";
+import Summary from "../../features/budgets/Summary/Summary";
+import Sections from "../../features/budgets/Sections/Sections";
 import styles from "./Budgets.module.scss";
 
 function Budgets() {
@@ -14,8 +14,8 @@ function Budgets() {
         <Button variant="primary">+ Add New Budget</Button>
       </header>
       <div className={styles.budgets__body}>
-        <BudgetSummary />
-        <BudgetSections />
+        <Summary />
+        <Sections />
       </div>
     </div>
   );

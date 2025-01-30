@@ -1,0 +1,16 @@
+/** @format */
+
+@use "../../../styles/abstracts/variables.scss" as var;
+@use "../../../styles/abstracts/mixins.scss" as mix;
+
+.sections {
+  .section {
+    background-color: var.$color-white;
+    padding: 3.2rem;
+    border-radius: 1.2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

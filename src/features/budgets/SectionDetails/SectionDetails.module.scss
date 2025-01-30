@@ -1,0 +1,40 @@
+/** @format */
+
+@use "../../../styles/abstracts/variables.scss" as var;
+@use "../../../styles/abstracts/mixins.scss" as mix;
+
+.box {
+  background-color: var.$color-primary-beige-100;
+  padding: 2rem;
+  border-radius: 1.2rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__header-heading {
+    @include mix.typography(3, true, var.$color-gray-900);
+  }
+
+  &__header-button {
+    position: relative;
+    padding-right: 2.4rem;
+  }
+
+  &__header-link {
+    @include mix.typography(4, false, var.$color-gray-500);
+  }
+
+  &__header-icon-container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) rotate(-90deg);
+
+    svg {
+      fill: var.$color-gray-500;
+    }
+  }
+}
