@@ -1,0 +1,27 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.header {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 1.6rem;
+  align-items: center;
+  gap: 1.6rem;
+
+  &__heading-dot {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  &__heading {
+    @include mix.typography(2, true, var.$color-gray-900);
+
+    &--small {
+      @include mix.typography(3, true, var.$color-gray-900);
+      white-space: nowrap;
+    }
+  }
+}
