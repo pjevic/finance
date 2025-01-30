@@ -1,9 +1,10 @@
 /** @format */
 import { Link } from "react-router-dom";
 import { CaretDown } from "@phosphor-icons/react";
+import { formatToDollarsWithPrefix, formatDate } from "../../../utils/helpers";
 import styles from "./SectionDetails.module.scss";
 
-function SectionDetails() {
+function SectionDetails({ data }) {
   return (
     <div className={styles.box}>
       <header className={styles.box__header}>
@@ -18,7 +19,26 @@ function SectionDetails() {
         </button>
       </header>
 
-      <div></div>
+      <div className={styles.table}>
+        {data.map((transaction, i) => (
+          <div key={i} className={styles.table__item}>
+            <img
+              src={transaction.avatar}
+              alt={transaction.name}
+              className={styles.table__img}
+            />
+            <p className={styles.table__name}>{transaction.name}</p>
+            <div className={styles.table__details}>
+              <p className={styles.table__amount}>
+                {formatToDollarsWithPrefix(transaction.amount)}
+              </p>
+              <p className={styles.table__date}>
+                {formatDate(transaction.date)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

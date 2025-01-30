@@ -3,8 +3,7 @@
 import { formatToDollars } from "../../../utils/helpers";
 import styles from "./SectionSummary.module.scss";
 
-function SectionSummary({ maximum, theme }) {
-  const width = 50;
+function SectionSummary({ maximum, theme, spent }) {
   return (
     <div className={styles.summary}>
       <div>
@@ -17,7 +16,7 @@ function SectionSummary({ maximum, theme }) {
       <div className={styles.summary__range}>
         <div
           className={styles["summary__range-value"]}
-          style={{ backgroundColor: theme, width: `${width}%` }}
+          style={{ backgroundColor: theme, width: `${spent}%` }}
         ></div>
       </div>
 

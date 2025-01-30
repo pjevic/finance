@@ -8,6 +8,29 @@ import SectionSummary from "../SectionSummary/SectionSummary";
 import SectionDetails from "../SectionDetails/SectionDetails";
 import styles from "./Sections.module.scss";
 
+function getCategorizedTransactions(budgets, transactions) {
+  return budgets.map(({ category, theme, maximum }) => {
+    const categoryTransactions = transactions
+      .filter((transaction) => transaction.category === category)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const totalSpent = categoryTransactions.reduce(
+      (sum, { amount }) => sum + amount,
+      0
+    );
+    const spent =
+      maximum > 0 ? Math.round(Math.abs((totalSpent / maximum) * 100)) : 0;
+
+    return {
+      category,
+      theme,
+      maximum,
+      spent,
+      transactions: categoryTransactions.slice(0, 3),
+    };
+  });
+}
+
 function BudgetSections() {
   const { isLoadingBudgets, budgets } = useBudgets();
   const { isLoadingTransactions, transactions } = useTransactions();
@@ -15,27 +38,22 @@ function BudgetSections() {
   if (isLoadingBudgets || isLoadingTransactions)
     return <p>Loading budgets...</p>;
 
-  const budget = budgets.at(0); // Extract the first budget for testing
-
-  const categories = budgets.map((budget) => budget.category);
-
-  const categorizedTransactions = categories.map((category) => ({
-    category,
-    transactions: transactions
-      .filter((transaction) => transaction.category === category)
-      .sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort by date descending
-      .slice(0, 3), // Get only the latest 3 transactions
-  }));
-
-  console.log(categorizedTransactions);
+  const categorizedTransactions = getCategorizedTransactions(
+    budgets,
+    transactions
+  );
 
   return (
     <div className={styles.sections}>
-      <section className={styles.section}>
-        <SectionHeading heading={budget.category} theme={budget.theme} />
-        <SectionSummary maximum={budget.maximum} theme={budget.theme} />
-        <SectionDetails />
-      </section>
+      {categorizedTransactions.map(
+        ({ category, theme, maximum, spent, transactions }) => (
+          <section key={category} className={styles.section}>
+            <SectionHeading heading={category} theme={theme} />
+            <SectionSummary maximum={maximum} theme={theme} spent={spent} />
+            <SectionDetails data={transactions} />
+          </section>
+        )
+      )}
     </div>
   );
 }
