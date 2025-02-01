@@ -1,12 +1,22 @@
 /** @format */
 
-// import { useBudgets } from "../useBudgets";
+import DataPie from "../../../ui/DataPie/DataPie";
 import styles from "./Summary.module.scss";
 
-function Summary() {
-  // const { isLoadingBudgets, budgets } = useBudgets();
+import { useBudgets } from "../useBudgets";
+import { Spinner } from "@phosphor-icons/react";
 
-  return <div className={styles.summary}></div>;
+function Summary() {
+  const { isLoadingBudgets, budgets } = useBudgets();
+  console.log(budgets);
+
+  if (isLoadingBudgets) return <Spinner />;
+
+  return (
+    <div className={styles.summary}>
+      <DataPie budgets={budgets} />
+    </div>
+  );
 }
 
 export default Summary;

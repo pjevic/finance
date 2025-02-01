@@ -13,7 +13,7 @@ import { PAGE_SIZE } from "../../../utils/constants";
 
 function TransactionsTable() {
   const { isLoadingTransactions, transactions } = useTransactions();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   if (isLoadingTransactions) return <Spinner />;
 
@@ -21,13 +21,6 @@ function TransactionsTable() {
   const filterValue = searchParams.get("category") || "All Transactions";
   const searchQuery = searchParams.get("search") || "";
   const currentPage = Number(searchParams.get("page")) || 1;
-
-  // Update search query in URL
-  const handleSearchChange = (event) => {
-    searchParams.set("search", event.target.value);
-    searchParams.set("page", 1); // Reset to page 1 on search
-    setSearchParams(searchParams);
-  };
 
   // Filter transactions by category
   const filteredTransactions =

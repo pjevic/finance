@@ -1,0 +1,62 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.pie {
+  margin-top: 2rem;
+
+  justify-items: center;
+  align-items: center;
+
+  //   background-color: red;
+
+  &__wrapper {
+    position: relative;
+    width: 24rem;
+    height: 24rem;
+    margin: 1rem 0;
+  }
+
+  .circleCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    @include mix.flex(column, center, null);
+
+    .sum {
+      @include mix.typography(5, true, var.$color-gray-900);
+      margin-bottom: 0.8rem;
+    }
+
+    .text {
+      @include mix.typography(5, true, var.$color-gray-900);
+    }
+  }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  @include mix.respond(tab-port) {
+    grid-template-columns: 1fr 20%;
+  }
+
+  @include mix.respond(phone) {
+    grid-template-columns: 1fr;
+
+    .legend {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .legend > * {
+      flex: 0 0 47%;
+    }
+  }
+}
