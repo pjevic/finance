@@ -93,3 +93,27 @@ export const getRecurringBills = (transactions) => {
       };
     });
 };
+
+export function getCategorizedTransactions(budgets, transactions) {
+  return budgets.map(({ category, theme, maximum }) => {
+    const categoryTransactions = transactions
+      .filter((transaction) => transaction.category === category)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const totalSpent = categoryTransactions.reduce(
+      (sum, { amount }) => sum + amount,
+      0
+    );
+    const spent =
+      maximum > 0 ? Math.round(Math.abs((totalSpent / maximum) * 100)) : 0;
+
+    return {
+      category,
+      theme,
+      maximum,
+      spent,
+      totalSpent: Math.abs(totalSpent),
+      transactions: categoryTransactions.slice(0, 3),
+    };
+  });
+}

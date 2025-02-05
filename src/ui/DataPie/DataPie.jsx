@@ -12,7 +12,6 @@ function DataPie({ budgets }) {
     lightColor: lightenColor(budget.theme),
   }));
 
-  console.log("DATA:", pieChartData);
   return (
     <div className={styles.pie}>
       <div className={styles.pie__wrapper}>

@@ -4,11 +4,15 @@
 @use "../../../styles/abstracts/mixins.scss" as mix;
 
 .sections {
+  flex-grow: 608;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
   .section {
     background-color: var.$color-white;
     padding: 3.2rem;
     border-radius: 1.2rem;
-    margin-bottom: 2.4rem;
 
     display: flex;
     flex-direction: column;

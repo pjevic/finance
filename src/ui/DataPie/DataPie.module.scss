@@ -4,18 +4,18 @@
 @use "../../styles/abstracts/mixins.scss" as mix;
 
 .pie {
-  margin-top: 2rem;
+  margin-top: 3.2rem;
 
   justify-items: center;
   align-items: center;
 
-  //   background-color: red;
+  // background-color: red;
 
   &__wrapper {
     position: relative;
     width: 24rem;
     height: 24rem;
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
 
   .circleCenter {
@@ -28,12 +28,12 @@
     @include mix.flex(column, center, null);
 
     .sum {
-      @include mix.typography(5, true, var.$color-gray-900);
+      @include mix.typography(1, true, var.$color-gray-900);
       margin-bottom: 0.8rem;
     }
 
     .text {
-      @include mix.typography(5, true, var.$color-gray-900);
+      @include mix.typography(5, false, var.$color-gray-500);
     }
   }
 
