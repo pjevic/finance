@@ -8,16 +8,18 @@ import Button from "../../ui/Button/Button";
 import FormModal from "../../ui/FormModal/FormModal";
 import FormSelect from "../../ui/FormSelect/FormSelect";
 import FormInput from "../../ui/FormInput/FormInput";
+import ThemeSelect from "../../ui/ThemeSelect/ThemeSelect";
 import Summary from "../../features/budgets/Summary/Summary";
 import Sections from "../../features/budgets/Sections/Sections";
 import styles from "./Budgets.module.scss";
 
-import { SELECT_CATEGORY } from "../../utils/constants";
+import { SELECT_CATEGORY, SELECT_COLOR } from "../../utils/constants";
 
 function Budgets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(SELECT_CATEGORY.at(0));
   const [newBudget, setNewBudget] = useState("");
+  const [selectedTheme, setSelectedTheme] = useState(SELECT_COLOR.at(0));
 
   return (
     <div className={styles.budgets}>
@@ -50,6 +52,13 @@ function Budgets() {
           placeholder="$   e.g. 2000"
           value={newBudget}
           onChange={(e) => setNewBudget(e.target.value)}
+        />
+
+        <ThemeSelect
+          label="Theme"
+          options={SELECT_COLOR}
+          selectedTheme={selectedTheme}
+          onChange={setSelectedTheme}
         />
       </FormModal>
     </div>
