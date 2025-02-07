@@ -42,6 +42,17 @@
     padding: 1.6rem;
 
     display: inline-block;
+
+    &--wide {
+      background-color: var.$color-gray-900;
+      @include mix.typography(4, true, var.$color-white);
+
+      padding: 1.6rem;
+
+      display: inline-block;
+      text-align: center;
+      margin-top: 4px;
+    }
   }
 
   &__basic {

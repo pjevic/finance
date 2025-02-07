@@ -60,6 +60,8 @@ function Budgets() {
           selectedTheme={selectedTheme}
           onChange={setSelectedTheme}
         />
+
+        <Button variant="primary--wide">Add Budget</Button>
       </FormModal>
     </div>
   );
