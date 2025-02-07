@@ -7,6 +7,7 @@ import Heading from "../../ui/Heading/Heading";
 import Button from "../../ui/Button/Button";
 import FormModal from "../../ui/FormModal/FormModal";
 import FormSelect from "../../ui/FormSelect/FormSelect";
+import FormInput from "../../ui/FormInput/FormInput";
 import Summary from "../../features/budgets/Summary/Summary";
 import Sections from "../../features/budgets/Sections/Sections";
 import styles from "./Budgets.module.scss";
@@ -16,6 +17,7 @@ import { SELECT_CATEGORY } from "../../utils/constants";
 function Budgets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(SELECT_CATEGORY.at(0));
+  const [newBudget, setNewBudget] = useState("");
 
   return (
     <div className={styles.budgets}>
@@ -41,6 +43,13 @@ function Budgets() {
           label="Budget Category"
           selectedOption={selectedOption}
           onChange={setSelectedOption}
+        />
+
+        <FormInput
+          label="Target "
+          placeholder="$   e.g. 2000"
+          value={newBudget}
+          onChange={(e) => setNewBudget(e.target.value)}
         />
       </FormModal>
     </div>

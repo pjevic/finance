@@ -1,0 +1,22 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    @include mix.typography(5, bold, var.$color-gray-500);
+    margin-bottom: 4px;
+  }
+
+  &__input {
+    border: 1px solid var.$color-primary-beige-500;
+    border-radius: 0.8rem;
+    padding: 1.2rem 0;
+    padding-left: 2rem;
+    padding-right: 3.6rem;
+  }
+}

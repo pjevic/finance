@@ -14,7 +14,7 @@
 
     &--select {
       @include mix.typography(4, false, var.$color-gray-900);
-      width: calc(100% - 6.4rem);
+      width: calc(100% - 5.8rem);
       border: 1px solid var.$color-primary-beige-500;
       border-radius: 0.8rem;
       padding: 1.2rem 0;
