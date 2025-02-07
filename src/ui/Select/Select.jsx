@@ -87,12 +87,14 @@ function Select({ options, onChange, label, Icon }) {
           </span>
         </button>
 
-        <button
-          className={styles["select__toggle--icon"]}
-          onClick={toggleDropdown}
-        >
-          <Icon weight="fill" size="2rem" />
-        </button>
+        {Icon && (
+          <button
+            className={styles["select__toggle--icon"]}
+            onClick={toggleDropdown}
+          >
+            <Icon weight="fill" size="2rem" />
+          </button>
+        )}
       </div>
 
       <ul

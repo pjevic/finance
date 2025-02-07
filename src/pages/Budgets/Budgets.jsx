@@ -2,15 +2,20 @@
 "use client";
 
 import { useState } from "react";
+
 import Heading from "../../ui/Heading/Heading";
 import Button from "../../ui/Button/Button";
 import FormModal from "../../ui/FormModal/FormModal";
+import FormSelect from "../../ui/FormSelect/FormSelect";
 import Summary from "../../features/budgets/Summary/Summary";
 import Sections from "../../features/budgets/Sections/Sections";
 import styles from "./Budgets.module.scss";
 
+import { SELECT_CATEGORY } from "../../utils/constants";
+
 function Budgets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(SELECT_CATEGORY.at(0));
 
   return (
     <div className={styles.budgets}>
@@ -30,7 +35,14 @@ function Budgets() {
         description="Choose a category to set a spending budget. These categories can help you monitor spending."
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      ></FormModal>
+      >
+        <FormSelect
+          options={SELECT_CATEGORY}
+          label="Budget Category"
+          selectedOption={selectedOption}
+          onChange={setSelectedOption}
+        />
+      </FormModal>
     </div>
   );
 }

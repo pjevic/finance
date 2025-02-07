@@ -1,0 +1,85 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.select {
+  &__label {
+    @include mix.typography(5, true, var.$color-gray-500);
+    margin-bottom: 4px;
+  }
+
+  &__toggle {
+    position: relative;
+
+    &--select {
+      @include mix.typography(4, false, var.$color-gray-900);
+      width: calc(100% - 6.4rem);
+      border: 1px solid var.$color-primary-beige-500;
+      border-radius: 0.8rem;
+      padding: 1.2rem 0;
+      padding-left: 2rem;
+      padding-right: 3.6rem;
+
+      position: relative;
+
+      .select__label {
+        @include mix.typography(4, false, var.$color-gray-900);
+      }
+
+      .select__icon-container {
+        position: absolute;
+        width: 1.6rem;
+        height: 1.6rem;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2rem;
+      }
+    }
+  }
+
+  &__dropdown {
+    background-color: var.$color-white;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.8rem;
+    max-height: 30rem;
+    width: calc(100% - 0.5rem);
+    overflow-y: scroll;
+
+    position: absolute;
+    top: 5.5rem;
+    left: 0;
+    z-index: 100;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__dropdown-option {
+    padding: 1.2rem 0;
+    padding-right: 2rem;
+    margin: 0 2.2rem;
+    @include mix.typography(4, false, var.$color-gray-900);
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var.$color-gray-100;
+    }
+
+    &--active {
+      @include mix.typography(4, true, var.$color-gray-900);
+    }
+  }
+}

@@ -56,6 +56,7 @@ function TransactionsTableOperations() {
           Icon={SortAscending}
           defaultOption={SORT_BY.at(0)}
         />
+
         {categories.length > 0 && (
           <Select
             label="Category"
