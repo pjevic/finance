@@ -3,7 +3,14 @@
 import { XCircle } from "@phosphor-icons/react";
 import styles from "./FormModal.module.scss";
 
-function FormModal({ heading, description, isOpen, onClose, children }) {
+function FormModal({
+  heading,
+  description,
+  isOpen,
+  onClose,
+  onSubmit,
+  children,
+}) {
   return (
     <div
       className={`${styles.overlay} ${isOpen ? styles.show : ""}`}
@@ -19,10 +26,10 @@ function FormModal({ heading, description, isOpen, onClose, children }) {
             <XCircle size="3.2rem" />
           </button>
         </header>
-        <div className={styles.modal__content}>
+        <form className={styles.modal__content} onSubmit={onSubmit}>
           <p className={styles["modal__content-description"]}>{description}</p>
           {children}
-        </div>
+        </form>
       </div>
     </div>
   );

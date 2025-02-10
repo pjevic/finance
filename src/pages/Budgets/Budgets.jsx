@@ -21,6 +21,25 @@ function Budgets() {
   const [newBudget, setNewBudget] = useState("");
   const [selectedTheme, setSelectedTheme] = useState(SELECT_COLOR.at(0));
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = {
+      category: selectedOption,
+      budget: newBudget,
+      theme: selectedTheme,
+    };
+
+    SELECT_CATEGORY.forEach((theme) => {
+      if (theme.name === selectedTheme.name) {
+        theme.used.budget = true;
+      }
+    });
+
+    console.log("New Budget Data:", formData);
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={styles.budgets}>
       <header className={styles.budgets__header}>
@@ -39,6 +58,7 @@ function Budgets() {
         description="Choose a category to set a spending budget. These categories can help you monitor spending."
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onSubmit={handleSubmit}
       >
         <FormSelect
           options={SELECT_CATEGORY}
@@ -61,7 +81,9 @@ function Budgets() {
           onChange={setSelectedTheme}
         />
 
-        <Button variant="primary--wide">Add Budget</Button>
+        <Button variant="primary--wide" type="submit">
+          Add Budget
+        </Button>
       </FormModal>
     </div>
   );

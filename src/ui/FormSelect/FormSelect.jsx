@@ -20,6 +20,7 @@ function FormSelect({ options, label, onChange, selectedOption }) {
         <button
           className={styles["select__toggle--select"]}
           onClick={toggleDropdown}
+          type="button"
         >
           <span className={styles["select__label"]}>{selectedOption}</span>
           <span className={styles["select__icon-container"]}>

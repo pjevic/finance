@@ -23,7 +23,7 @@ export const SELECT_COLOR = [
     name: "red",
     color: "#c94736",
     used: {
-      budget: true,
+      budget: false,
       pot: false,
     },
   },
@@ -31,7 +31,7 @@ export const SELECT_COLOR = [
     name: "cyan",
     color: "#82c9d7",
     used: {
-      budget: false,
+      budget: true,
       pot: false,
     },
   },
@@ -39,7 +39,7 @@ export const SELECT_COLOR = [
     name: "navy",
     color: "#626070",
     used: {
-      budget: false,
+      budget: true,
       pot: false,
     },
   },
@@ -47,7 +47,7 @@ export const SELECT_COLOR = [
     name: "green",
     color: "#277c78",
     used: {
-      budget: false,
+      budget: true,
       pot: false,
     },
   },
@@ -55,7 +55,7 @@ export const SELECT_COLOR = [
     name: "yellow",
     color: "#f2cdac",
     used: {
-      budget: false,
+      budget: true,
       pot: false,
     },
   },

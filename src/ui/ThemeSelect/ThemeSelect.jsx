@@ -22,6 +22,7 @@ function ThemeSelect({ label, options, selectedTheme, onChange }) {
         <button
           className={styles["select__toggle--select"]}
           onClick={toggleDropdown}
+          type="button"
         >
           <div style={{ display: "flex" }}>
             <div

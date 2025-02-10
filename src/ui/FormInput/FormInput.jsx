@@ -11,6 +11,7 @@ function FormInput({ placeholder, label, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        type="text"
       />
     </div>
   );
