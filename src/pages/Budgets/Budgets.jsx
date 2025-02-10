@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useCreateBudget } from "../../features/budgets/useCreateBudget";
 
 import Heading from "../../ui/Heading/Heading";
 import Button from "../../ui/Button/Button";
@@ -20,14 +21,16 @@ function Budgets() {
   const [selectedOption, setSelectedOption] = useState(SELECT_CATEGORY.at(0));
   const [newBudget, setNewBudget] = useState("");
   const [selectedTheme, setSelectedTheme] = useState(SELECT_COLOR.at(0));
+  const { createBudget } = useCreateBudget();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = {
       category: selectedOption,
-      budget: newBudget,
-      theme: selectedTheme,
+      maximum: newBudget,
+      theme: selectedTheme.color,
+      userID: 1, // This is for now hardcoded, if the app scales up with authentication and different users, it will not be hardcoded
     };
 
     SELECT_CATEGORY.forEach((theme) => {
@@ -38,6 +41,8 @@ function Budgets() {
 
     console.log("New Budget Data:", formData);
     setIsModalOpen(false);
+
+    createBudget(formData);
   };
 
   return (
