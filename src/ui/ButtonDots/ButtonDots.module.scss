@@ -1,6 +1,7 @@
 /** @format */
 
 @use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
 
 .dots {
   display: flex;
@@ -14,5 +15,34 @@
     height: 4px;
     background-color: var.$color-gray-300;
     border-radius: 50%;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+
+  padding: 1.2rem 2rem;
+  background-color: var.$color-white;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.8rem;
+  @include mix.typography(4, false, var.$color-gray-900);
+
+  &__item {
+    cursor: pointer;
+
+    &:not(:first-child) {
+      padding-top: 1.2rem;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var.$color-gray-100;
+      padding-bottom: 1.2rem;
+    }
+
+    &:last-child {
+      @include mix.typography(4, false, var.$color-secondary-red);
+    }
   }
 }

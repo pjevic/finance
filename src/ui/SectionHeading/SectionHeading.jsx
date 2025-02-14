@@ -12,7 +12,7 @@ function SectionHeading({ heading, theme }) {
       ></span>
 
       <h2 className={styles["header__heading"]}>{heading}</h2>
-      <ButtonDots />
+      <ButtonDots type="Budget" />
     </header>
   );
 }
