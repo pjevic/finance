@@ -1,6 +1,7 @@
 /** @format */
 
 import { useState, useEffect, useRef } from "react";
+import Modal from "../Modal/Modal";
 import styles from "./ButtonDots.module.scss";
 
 function ButtonDots({ type }) {
@@ -39,8 +40,23 @@ function ButtonDots({ type }) {
 
       {isOpen && (
         <ul className={styles.dropdown}>
-          <li className={styles.dropdown__item}>Edit {type}</li>
-          <li className={styles.dropdown__item}>Delete {type}</li>
+          <Modal>
+            <Modal.Open opens="edit">
+              <li className={styles.dropdown__item}>Edit {type}</li>
+            </Modal.Open>
+            <Modal.Window name="edit">
+              <div>EDIT</div>
+            </Modal.Window>
+          </Modal>
+
+          <Modal>
+            <Modal.Open>
+              <li className={styles.dropdown__item}>Delete {type}</li>
+            </Modal.Open>
+            <Modal.Window>
+              <div>DELETE</div>
+            </Modal.Window>
+          </Modal>
         </ul>
       )}
     </div>

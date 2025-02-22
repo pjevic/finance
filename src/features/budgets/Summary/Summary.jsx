@@ -3,18 +3,18 @@
 import DataPie from "../../../ui/DataPie/DataPie";
 import styles from "./Summary.module.scss";
 
-import { useBudgets } from "../useBudgets";
-import { useTransactions } from "../../transactions/useTransactions";
 import {
   getCategorizedTransactions,
   formatToDollars,
 } from "../../../utils/helpers";
 import Spinner from "../../../ui/Spinner/Spinner";
 
-function Summary() {
-  const { isLoadingBudgets, budgets } = useBudgets();
-  const { isLoadingTransactions, transactions } = useTransactions();
-
+function Summary({
+  isLoadingBudgets,
+  budgets,
+  isLoadingTransactions,
+  transactions,
+}) {
   if (isLoadingBudgets || isLoadingTransactions) return <Spinner />;
 
   const categorizedTransactions = getCategorizedTransactions(
