@@ -18,4 +18,35 @@
 }
 
 .modal {
+  background: white;
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+  width: 56rem;
+  max-width: 90%;
+  position: relative;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  &__heading {
+    @include mix.typography(1, true, var.$color-gray-900);
+  }
+
+  &__close {
+    cursor: pointer;
+
+    svg {
+      fill: var.$color-gray-500;
+    }
+  }
+
+  &__description {
+    @include mix.typography(4, false, var.$color-gray-500);
+    margin-bottom: 2rem;
+  }
 }

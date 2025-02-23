@@ -1,0 +1,12 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.form {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}

@@ -27,7 +27,10 @@ function ThemeSelect({ label, options, selectedTheme, onChange }) {
           <div style={{ display: "flex" }}>
             <div
               className={styles["select__dropdown-circle"]}
-              style={{ backgroundColor: selectedTheme.color }}
+              style={{
+                backgroundColor: selectedTheme.color,
+                marginTop: "0.2rem",
+              }}
             ></div>
             <span className={styles["select__dropdown-name"]}>
               {selectedTheme.name}

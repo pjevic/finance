@@ -2,6 +2,7 @@
 
 import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
+import { XCircle } from "@phosphor-icons/react";
 
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import styles from "./Modal.module.scss";
@@ -27,7 +28,7 @@ function Open({ children, opens: opensWindowName }) {
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
 
-function Window({ children, name, heading }) {
+function Window({ children, name, heading, description }) {
   const { openName, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
 
@@ -36,8 +37,14 @@ function Window({ children, name, heading }) {
   return createPortal(
     <div className={styles.overlay}>
       <div className={styles.modal} ref={ref}>
-        {heading && <h3 className={styles.modal__heading}>{heading}</h3>}
-        <button onClick={close}>X</button>
+        <div className={styles.modal__header}>
+          {heading && <h3 className={styles.modal__heading}>{heading}</h3>}
+
+          <button onClick={close} className={styles.modal__close}>
+            <XCircle size="3.2rem" />
+          </button>
+        </div>
+        <div className={styles.modal__description}>{description}</div>
         <div>{cloneElement(children, { onCloseModal: close })}</div>
       </div>
     </div>,
