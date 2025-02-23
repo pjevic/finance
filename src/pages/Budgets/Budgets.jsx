@@ -19,6 +19,7 @@ import styles from "./Budgets.module.scss";
 
 import { SELECT_CATEGORY, SELECT_COLOR } from "../../utils/constants";
 import { useState } from "react";
+import PageHeader from "../../ui/PageHeader/PageHeader";
 
 function Budgets() {
   const { isLoadingBudgets, budgets } = useBudgets();
@@ -45,14 +46,14 @@ function Budgets() {
       }
     });
 
-    console.log("New Budget Data:", formData);
     createBudget(formData);
   };
 
   return (
     <div className={styles.budgets}>
-      <header className={styles.budgets__header}>
+      <PageHeader className={styles.budgets__header}>
         <Heading>Budgets</Heading>
+
         <Modal>
           <Modal.Open opens="Form: Add New Budget">
             <Button variant="primary">+ Add New Budget</Button>
@@ -90,7 +91,7 @@ function Budgets() {
             </Form>
           </Modal.Window>
         </Modal>
-      </header>
+      </PageHeader>
 
       <div className={styles.budgets__body}>
         <Summary
