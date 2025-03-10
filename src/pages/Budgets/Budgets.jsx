@@ -72,7 +72,7 @@ function Budgets() {
               />
 
               <FormInput
-                label="Target "
+                label="Maximum Spend"
                 placeholder="$   e.g. 2000"
                 value={newBudget}
                 onChange={(e) => setNewBudget(e.target.value)}
@@ -105,6 +105,12 @@ function Budgets() {
           budgets={budgets}
           isLoadingTransactions={isLoadingTransactions}
           transactions={transactions}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          newBudget={newBudget}
+          setNewBudget={setNewBudget}
+          selectedTheme={selectedTheme}
+          setSelectedTheme={setSelectedTheme}
         />
       </div>
     </div>

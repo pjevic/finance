@@ -3,7 +3,17 @@
 import ButtonDots from "../ButtonDots/ButtonDots";
 import styles from "./SectionHeading.module.scss";
 
-function SectionHeading({ heading, theme, data }) {
+function SectionHeading({
+  heading,
+  theme,
+  data,
+  selectedOption,
+  setSelectedOption,
+  newBudget,
+  setNewBudget,
+  selectedTheme,
+  setSelectedTheme,
+}) {
   return (
     <header className={styles.header}>
       <span
@@ -12,7 +22,16 @@ function SectionHeading({ heading, theme, data }) {
       ></span>
 
       <h2 className={styles["header__heading"]}>{heading}</h2>
-      <ButtonDots type="Budget" data={data} />
+      <ButtonDots
+        type="Budget"
+        data={data}
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+        newBudget={newBudget}
+        setNewBudget={setNewBudget}
+        selectedTheme={selectedTheme}
+        setSelectedTheme={setSelectedTheme}
+      />
     </header>
   );
 }

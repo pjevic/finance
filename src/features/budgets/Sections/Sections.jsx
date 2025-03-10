@@ -12,6 +12,12 @@ function BudgetSections({
   budgets,
   isLoadingTransactions,
   transactions,
+  selectedOption,
+  setSelectedOption,
+  newBudget,
+  setNewBudget,
+  selectedTheme,
+  setSelectedTheme,
 }) {
   if (isLoadingBudgets || isLoadingTransactions)
     return <p>Loading budgets...</p>;
@@ -30,6 +36,12 @@ function BudgetSections({
               heading={category}
               theme={theme}
               data={transactions}
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
+              newBudget={newBudget}
+              setNewBudget={setNewBudget}
+              selectedTheme={selectedTheme}
+              setSelectedTheme={setSelectedTheme}
             />
             <SectionSummary maximum={maximum} theme={theme} spent={spent} />
             <SectionDetails data={transactions} />
