@@ -1,0 +1,13 @@
+/** @format */
+
+@use "../../styles/abstracts/variables.scss" as var;
+@use "../../styles/abstracts/mixins.scss" as mix;
+
+.btn {
+  background-color: var.$color-primary-beige-100;
+  @include mix.typography(4, true, var.$color-gray-900);
+  width: 100%;
+  text-align: center;
+  padding: 1.6rem 0;
+  border-radius: 0.8rem;
+}
