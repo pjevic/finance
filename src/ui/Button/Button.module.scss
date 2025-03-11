@@ -53,10 +53,32 @@
       text-align: center;
       margin-top: 4px;
     }
+
+    &--wide-delete {
+      background-color: var.$color-secondary-red;
+      @include mix.typography(4, true, var.$color-white);
+
+      padding: 1.6rem;
+
+      display: inline-block;
+      text-align: center;
+      margin-top: 4px;
+    }
   }
 
   &__basic {
     padding: 1rem 1.6rem;
+
+    &--noborder {
+      @include mix.typography(4, false, var.$color-gray-500);
+      border: none;
+
+      &:hover {
+        border: none;
+        background-color: transparent;
+        @include mix.typography(4, false, var.$color-gray-500);
+      }
+    }
   }
 
   &__square {

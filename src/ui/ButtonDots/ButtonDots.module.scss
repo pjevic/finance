@@ -46,3 +46,8 @@
     }
   }
 }
+
+.btn__delete {
+  @include mix.typography(4, false, var.$color-gray-500);
+  align-self: center;
+}

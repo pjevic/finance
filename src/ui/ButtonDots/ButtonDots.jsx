@@ -19,6 +19,7 @@ function ButtonDots({
   setNewBudget,
   selectedTheme,
   setSelectedTheme,
+  heading,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -104,8 +105,17 @@ function ButtonDots({
         </Form>
       </Modal.Window>
 
-      <Modal.Window>
-        <div>DELETE</div>
+      <Modal.Window
+        heading={`Delete '${heading}'`}
+        description="Are you sure you want to delete this budget? This action cannot be reversed, and all the data inside it will be removed forever."
+      >
+        <Form onSubmit={handleSubmit}>
+          <Button variant="primary--wide-delete" type="submit">
+            Yes, Confirm Deletion
+          </Button>
+
+          <Button variant="basic--noborder">No, Go Back</Button>
+        </Form>
       </Modal.Window>
     </Modal>
   );

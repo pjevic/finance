@@ -31,6 +31,7 @@ function SectionHeading({
         setNewBudget={setNewBudget}
         selectedTheme={selectedTheme}
         setSelectedTheme={setSelectedTheme}
+        heading={heading}
       />
     </header>
   );
