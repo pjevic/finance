@@ -17,70 +17,70 @@
     align-items: center;
   }
 
-  &__header-circle {
+  &__icon {
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 50%;
     margin-right: 1.6rem;
   }
 
-  &__heading {
+  &__title {
     @include mix.typography(2, true, var.$color-gray-900);
     margin-right: auto;
   }
 
-  &__data {
+  &__content {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+  }
 
-    &--saved {
-      display: flex;
-      align-items: center;
-    }
+  .saved {
+    display: flex;
+    align-items: center;
 
-    &--saved-text {
+    &__label {
       @include mix.typography(4, false, var.$color-gray-500);
       margin-right: auto;
     }
 
-    &--saved-value {
+    &__value {
       @include mix.typography(1, true, var.$color-gray-900);
-    }
-
-    &--target {
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-
-      .range__box {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .range__percentage {
-          @include mix.typography(5, true, var.$color-gray-500);
-        }
-
-        .range__target {
-          @include mix.typography(5, false, var.$color-gray-500);
-        }
-      }
-    }
-
-    &--target-range {
-      background-color: var.$color-primary-beige-100;
-      height: 0.8rem;
-      border-radius: 0.4rem;
-
-      .range__value {
-        height: 100%;
-        border-radius: 0.4rem;
-      }
     }
   }
 
-  &__options {
+  .target {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+
+    &__progress {
+      background-color: var.$color-primary-beige-100;
+      height: 0.8rem;
+      border-radius: 0.4rem;
+    }
+
+    &__bar {
+      height: 100%;
+      border-radius: 0.4rem;
+    }
+
+    &__info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__percentage {
+      @include mix.typography(5, true, var.$color-gray-500);
+    }
+
+    &__amount {
+      @include mix.typography(5, false, var.$color-gray-500);
+    }
+  }
+
+  &__actions {
     display: flex;
     align-items: center;
     gap: 1.6rem;
