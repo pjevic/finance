@@ -30,6 +30,10 @@
   }
 
   &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
     &--saved {
       display: flex;
       align-items: center;
@@ -42,6 +46,37 @@
 
     &--saved-value {
       @include mix.typography(1, true, var.$color-gray-900);
+    }
+
+    &--target {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+
+      .range__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .range__percentage {
+          @include mix.typography(5, true, var.$color-gray-500);
+        }
+
+        .range__target {
+          @include mix.typography(5, false, var.$color-gray-500);
+        }
+      }
+    }
+
+    &--target-range {
+      background-color: var.$color-primary-beige-100;
+      height: 0.8rem;
+      border-radius: 0.4rem;
+
+      .range__value {
+        height: 100%;
+        border-radius: 0.4rem;
+      }
     }
   }
 

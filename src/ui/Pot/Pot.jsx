@@ -8,6 +8,8 @@ import ButtonPot from "../ButtonPot/ButtonPot";
 import styles from "./Pot.module.scss";
 
 function Pot({ data }) {
+  const percentage = (data.total / data.target) * 100;
+
   return (
     <div className={styles.pot}>
       <div className={styles.pot__header}>
@@ -26,7 +28,27 @@ function Pot({ data }) {
             {formatToDollars(data.total)}
           </div>
         </div>
-        <div>{data.target}</div>
+
+        <div className={styles["pot__data--target"]}>
+          <div className={styles["pot__data--target-range"]}>
+            <div
+              className={styles.range__value}
+              style={{
+                width: `${percentage}%`,
+                backgroundColor: data.theme,
+              }}
+            ></div>
+          </div>
+
+          <div className={styles.range__box}>
+            <div className={styles.range__percentage}>
+              {percentage.toFixed(2)}%
+            </div>
+            <div className={styles.range__target}>
+              Target of {formatToDollars(data.target)}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className={styles.pot__options}>
