@@ -1,9 +1,15 @@
 /** @format */
 
+@use "../../styles/abstracts/mixins.scss" as mix;
+
 .pots {
   &__body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.4rem;
+
+    @include mix.respond(tab-port) {
+      grid-template-columns: 1fr;
+    }
   }
 }
