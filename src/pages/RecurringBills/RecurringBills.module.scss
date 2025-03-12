@@ -1,0 +1,24 @@
+/** @format */
+
+.bills {
+  &__body {
+    display: grid;
+    grid-template-columns: 337fr 699fr;
+    gap: 2.4rem;
+  }
+
+  &__total {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  &__summary {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  &__table {
+    grid-column: 2/3;
+    grid-row: 1/-1;
+  }
+}
